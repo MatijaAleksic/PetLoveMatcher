@@ -1,0 +1,52 @@
+<mat-card  elevation="5" fxFlex class="content">
+
+    <mat-card-title>
+        <h2>Add New User</h2>
+    </mat-card-title>
+
+    <mat-card-content >
+        <form id="userForm" (ngSubmit)="onSubmit()" *ngIf="!submitted" [formGroup]="form">
+            <mat-form-field>
+                <label>Username: </label>
+                <input formControlName="username" matInput required>
+            </mat-form-field>
+            <mat-form-field>
+                <label>Password: </label>
+                <input formControlName="password" matInput required type="password">
+            </mat-form-field>
+            <mat-form-field>
+                <label>First Name: </label>
+                <input formControlName="firstName" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <label>Last Name: </label>
+                <input formControlName="lastName" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <label>Email: </label>
+                <input formControlName="email" matInput>
+            </mat-form-field>
+
+            <!-- <mat-form-field>
+                <label>Role</label>
+                <mat-select formControlName="role">
+                    <mat-option *ngFor="let role1 of roles" [value]="role1">
+                        {{role1}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field> -->
+            
+
+            <button [disabled]="!form.valid" color="primary" mat-raised-button type="submit">Create</button>
+            <br>
+            <button color="primary" mat-raised-button (click) = "this.router.navigate(['/'])" >Go Back</button>
+        </form>
+        
+        <p *ngIf="notification" [class]="notification.msgType">{{notification.msgBody}}</p>
+        <br>
+        <mat-spinner *ngIf="submitted" mode="indeterminate"></mat-spinner>
+        <br>
+        <hr>
+    </mat-card-content>
+    
+</mat-card>

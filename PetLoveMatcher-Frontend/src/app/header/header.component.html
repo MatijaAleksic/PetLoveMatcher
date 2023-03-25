@@ -1,0 +1,57 @@
+<mat-toolbar class="app-navbar" color="primary" style="margin-left: 0px;">
+        <app-side-nav id="hello"></app-side-nav>
+
+    <div class="left" >
+            
+            <button mat-button mat-ripple id="home_button" routerLink="/">
+                Home
+            </button>
+
+            
+
+            <!-- <button *ngIf="hasSignedIn() && isUserAdmin()" mat-button routerLink="/user-table">
+                <span>User Table</span>
+            </button>
+
+            <button *ngIf="hasSignedIn() && isUserAdmin()" mat-button routerLink="/certificate-table">
+                <span>Certificate Table</span>
+            </button>
+
+            <button *ngIf="hasSignedIn() && isUserAdmin()" mat-button routerLink="/certificate-request-table">
+                <span>Certificate Request Table</span>
+            </button>
+
+            <button *ngIf="hasSignedIn() && isUserAdmin()" mat-button routerLink="/admin-homes-table">
+                <span>Homes</span>
+            </button>
+
+            <button *ngIf="hasSignedIn() && isUserAdmin()" mat-button routerLink="/device-messages">
+                <span>Device Messages</span>
+            </button>
+
+            <button *ngIf="hasSignedIn() && !isUserAdmin()" mat-button routerLink="/request-certificate">
+                <span>Request Certificate</span>
+            </button> -->
+
+    </div>
+
+
+    <div class="right">
+        <div fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="flex-end center">
+            <!-- <button *ngIf="!hasSignedIn()" mat-button mat-ripple routerLink="/signup">
+                <span>Sign up</span>
+            </button> -->
+            <button *ngIf="!hasSignedIn()" mat-button mat-ripple routerLink="/">
+                <span>Login</span>
+            </button>
+
+            <button *ngIf="!hasSignedIn()" mat-button mat-ripple routerLink="/">
+                <span>Register</span>
+            </button>
+
+            <button *ngIf="hasSignedIn()" mat-button mat-ripple (click)="logout()" routerLink="/">
+                <span>Logout</span>
+            </button>
+        </div>
+    </div>
+</mat-toolbar>
