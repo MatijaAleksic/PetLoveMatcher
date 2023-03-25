@@ -136,12 +136,6 @@ using (var scope = app.Services.CreateScope())
         var userManager = services.GetRequiredService<UserManager<User>>();
         var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
-
-        var configuration = services.GetRequiredService<IConfiguration>();
-        var appSettings = configuration.GetSection("AppSettings");
-        var dataSeeded = appSettings.GetValue<bool>("DataSeeded");
-
-    
         DbInitializer.SeedData(context, userManager, roleManager).Wait();
     }
 }
