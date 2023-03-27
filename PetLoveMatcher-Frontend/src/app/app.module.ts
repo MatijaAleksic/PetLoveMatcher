@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -25,12 +26,15 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 
     LoginComponent,
     RegisterComponent,
+    
 
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+
+    HttpClientModule,
 
     AngularMaterialModule
   ],
@@ -46,6 +50,7 @@ import { SideNavComponent } from './side-nav/side-nav.component';
     ApiService,
     UserService,
     ConfigService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

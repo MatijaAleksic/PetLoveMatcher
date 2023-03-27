@@ -13,6 +13,7 @@ export class ConfigService {
   private _users_url = this._api_url + '/users';
   private _login_url = this._auth_url + '/login';
   private _antiforgery_url = this._auth_url + "/antiforgery"
+  private _user_info_url = this._auth_url + "/user-info"
 
 
   get api_url(): string {
@@ -33,6 +34,10 @@ export class ConfigService {
 
   get antiforgery_url(): string {
     return this._antiforgery_url;
+  }
+
+  get user_info_url(): string {
+    return this._user_info_url;
   }
 
 

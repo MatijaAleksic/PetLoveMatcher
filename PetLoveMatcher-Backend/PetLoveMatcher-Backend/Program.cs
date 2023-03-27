@@ -73,18 +73,18 @@ builder.Services.AddAuthorization();
 //###########################
 //#         CORS            #
 //###########################
-//var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy(name: MyAllowSpecificOrigins,
-//                      policy =>
-//                      {
-//                          policy.WithOrigins("*")
-//                          .AllowAnyHeader()
-//                          .AllowCredentials()
-//                          .AllowAnyMethod();
-//                      });
-//});
+var MyAllowSpecificOrigins = "Angular-Frontend";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("https://localhost:4200")
+                          .AllowAnyHeader()
+                          .AllowCredentials()
+                          .AllowAnyMethod();
+                      });
+});
 //###################################
 
 
@@ -109,7 +109,7 @@ builder.Services.AddAuthorization();
 var app = builder.Build();
 
 
-//app.UseCors(MyAllowSpecificOrigins);
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthentication();
 app.UseRouting();

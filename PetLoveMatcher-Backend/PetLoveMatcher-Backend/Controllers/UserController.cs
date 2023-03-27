@@ -61,9 +61,7 @@ namespace PetLoveMatcher_Backend.Controllers
         {   
             try
             {
-                Console.WriteLine(id);
                 var userName = HttpContext.User.Identity.Name;
-                Console.WriteLine(userName);
                 if (user.UserName != userName)
                 {
                     return BadRequest("User cannot change other users information");

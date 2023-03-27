@@ -45,18 +45,10 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.route.params
-    //   .pipe(takeUntil(this.ngUnsubscribe))
-    //   .subscribe((params: DisplayMessage) => {
-    //     this.notification = params;
-    //   });
-    // // get return url from route parameters or default to '/'
-    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-
     //this.verificationToken
-    this.antiforgeryService.getToken().subscribe(token => {
-      // this.antiForgeryHeader = token.headerName + '=' + token.token;
-    });
+    // this.antiforgeryService.getToken().subscribe(token => {
+    //   // this.antiForgeryHeader = token.headerName + '=' + token.token;
+    // });
     
 
     this.form = this.formBuilder.group({
@@ -65,9 +57,18 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnDestroy() {
-    // this.ngUnsubscribe.next();
-    // this.ngUnsubscribe.complete();
+  ngOnDestroy(){
+    alert("destory");
+
+    this.authService.getUserInfo()
+    .subscribe(data => {
+      console.log(data);
+        this.router.navigate(['/']);
+      },
+      error => {
+        this.submitted = false;
+        this.notification = {msgType: 'error', msgBody: 'Incorrect username or password.'};
+      });
   }
 
   onSubmit() {
@@ -78,13 +79,13 @@ export class LoginComponent implements OnInit {
       // 'RequestVerificationToken': this.antiForgeryHeader
     });
 
-    console.log(this.verificationToken.nativeElement.value);
+    // console.log(this.verificationToken.nativeElement.value);
 
-    
     this.submitted = true;
 
     this.authService.login(this.form.value, customHeaders)
       .subscribe(data => {
+        console.log(data);
           this.router.navigate(['/']);
         },
         error => {

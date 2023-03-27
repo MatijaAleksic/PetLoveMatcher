@@ -10,6 +10,7 @@ using System.Security.Claims;
 using System.Text;
 using PetLoveMatcher_Backend.Models;
 using DtoNetProject.Services;
+using PetLoveMatcher_Backend.DTO;
 
 namespace DtoNetProject.Controllers
 {
@@ -108,6 +109,32 @@ namespace DtoNetProject.Controllers
             await _signInManager.SignInAsync(user, isPersistent: false);
 
             return Ok("User successfully registered!");
+        }
+
+
+
+        [Authorize]
+        [HttpGet]
+        [Route("user-info")]
+        [Authorize]
+        public async Task<IActionResult> GetUserInfo()
+        {
+            if (HttpContext.User.Identity.Name != null)
+            {
+                var user = HttpContext.User.Identity.Name;
+
+                User currentUser = await _userManager.FindByNameAsync(user);
+                var roles = await _userManager.GetRolesAsync(currentUser);
+
+                UserInfoDTO returnDTO = new UserInfoDTO(currentUser.UserName, currentUser.FirstName, currentUser.LastName, currentUser.Email, currentUser.PhoneNumber, roles);
+
+
+                return Ok(returnDTO);
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
     }
 }

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './Forms/login/login.component';
+import { RegisterComponent } from './Forms/register/register.component';
 
 const routes: Routes = [
   // {
@@ -7,16 +9,16 @@ const routes: Routes = [
   //   component: MaterialExamplesComponent,
   //   pathMatch: 'full'
   // },
-  // {
-  //   path: 'login',
-  //   component:LoginComponent,
-  //   pathMatch: 'full'
-  // },
-  // {
-  //   path: 'register',
-  //   component: RegisterComponent,
-  //   pathMatch: 'full'
-  // },
+  {
+    path: 'login',
+    component:LoginComponent, 
+    pathMatch: 'full'
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({

@@ -37,8 +37,27 @@ export class AuthService {
       .pipe(map((response) => {
         console.log(response);
         
-        this.currentUser = true;
-        this.userRole = true;
+        // this.currentUser = true;
+        // this.userRole = true;
+
+        // this.currentUser = response.user;
+        // this.userRole = response.user.roles;
+
+        // this.access_token = response.accessToken;
+        // this.authStatus = true;
+
+        sessionStorage.setItem("jwt", response.token);
+      }));
+  }
+
+  getUserInfo() {
+
+    return this.apiService.get(this.config.user_info_url)
+      .pipe(map((response) => {
+        console.log(response);
+        
+        // this.currentUser = true;
+        // this.userRole = true;
 
         // this.currentUser = response.user;
         // this.userRole = response.user.roles;
